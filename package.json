@@ -1,0 +1,23 @@
+{
+  "name": "node-express-crash-course",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nickonyi/Node-express-crash-course.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nickonyi/Node-express-crash-course/issues"
+  },
+  "homepage": "https://github.com/nickonyi/Node-express-crash-course#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
