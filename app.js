@@ -31,10 +31,9 @@ app.get("/api/posts", (req, res) => {
   const limit = parseInt(req.query.limit);
 
   if (!isNaN(limit) && limit > 0) {
-    res.status(200).json(posts.slice(0, limit));
-  } else {
-    res.status(200).json(posts);
+    return res.status(200).json(posts.slice(0, limit));
   }
+  res.status(200).json(posts);
 });
 
 //get a single post
