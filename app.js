@@ -2,6 +2,8 @@ import express from "express";
 import url from "url";
 import path from "path";
 import posts from "./routes/post.js";
+import logger from "./middleware/logger.js";
+import errorHandler from "./middleware/error.js";
 const PORT = 3000;
 
 const app = express();
@@ -16,7 +18,13 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+//logger middleware
+app.use(logger);
+
 app.use("/api/posts", posts);
+
+//error handler
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`listening at port ${PORT}`);

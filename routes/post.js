@@ -18,7 +18,7 @@ let posts = [
 ];
 
 //get all posts
-router.get("/", logger, (req, res) => {
+router.get("/", (req, res) => {
   const limit = parseInt(req.query.limit);
 
   if (!isNaN(limit) && limit > 0) {
@@ -28,26 +28,28 @@ router.get("/", logger, (req, res) => {
 });
 
 //get a single post
-router.get("/:id", (req, res) => {
+router.get("/:id", (req, res, next) => {
   const id = parseInt(req.params.id);
   const post = posts.find((post) => post.id === id);
 
   if (post) {
     res.status(200).json(post);
   } else {
-    res.status(404).json({ msg: "User not found" });
+    const error = new Error("User not found");
+    return next(error);
   }
 });
 
 //create new posts
-router.post("/", (req, res) => {
+router.post("/", (req, res, next) => {
   const newPost = {
     id: posts.length + 1,
     title: req.body.title,
   };
 
   if (!req.body.title) {
-    return res.status(400).json({ msg: "Please insert the title" });
+    const error = new Error("Please insert the title");
+    return next(error);
   }
   posts.push(newPost);
   res.status(201).json(posts);
