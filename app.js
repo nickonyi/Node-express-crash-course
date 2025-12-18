@@ -4,6 +4,7 @@ import path from "path";
 import posts from "./routes/post.js";
 import logger from "./middleware/logger.js";
 import errorHandler from "./middleware/error.js";
+import notFound from "./middleware/notFound.js";
 const PORT = 3000;
 
 const app = express();
@@ -24,6 +25,7 @@ app.use(logger);
 app.use("/api/posts", posts);
 
 //error handler
+app.use(notFound);
 app.use(errorHandler);
 
 app.listen(PORT, () => {
