@@ -9,11 +9,11 @@ const PORT = 3000;
 
 const app = express();
 
-//const __fileName = url.fileURLToPath(import.meta.url);
-//const __dirName = path.dirname(__fileName);
+const __fileName = url.fileURLToPath(import.meta.url);
+const __dirName = path.dirname(__fileName);
 
 //setup static folder
-//app.use(express.static(path.join(__dirName, "public")));
+app.use(express.static(path.join(__dirName, "public")));
 
 //Border parser middleware
 app.use(express.json());
